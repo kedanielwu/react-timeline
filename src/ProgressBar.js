@@ -25,11 +25,17 @@ const ProgressBar = ({length, node}) => {
     className="progress_bar"
     onClick={handleProgressBarUpdate}
     >
-      <div></div>
       <Filler percentage={percentage}></Filler>
       {
         data.map((item) => (
-          <Milestone key={item.timestamp} title={item.title} content={item.content} position={(item.timestamp / length) * 100} visible={(item.timestamp / length) * 100 >= percentage ? false : true}></Milestone>
+          <Milestone 
+          key={item.timestamp} 
+          title={item.title} 
+          content={item.content} 
+          position={(item.timestamp / length) * 100} 
+          visible={(item.timestamp / length) * 100 >= percentage ? false : true}>
+            
+          </Milestone>
         ))
       }
     </div>
