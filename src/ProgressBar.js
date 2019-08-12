@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import "./ProgressBar.css"
+import Milestone from "./Milestone"
 
 
 const Filler = ({ percentage }) => {
@@ -8,8 +9,10 @@ const Filler = ({ percentage }) => {
   )
 }
 
-const ProgressBar = () => {
+const ProgressBar = ({length, node}) => {
   const [percentage, updatePercentage] = useState(0);
+  const [data, setData] = useState(node);
+
   const handleProgressBarUpdate = () => {
     if (percentage === 100) {
       updatePercentage(0)
@@ -22,7 +25,13 @@ const ProgressBar = () => {
     className="progress_bar"
     onClick={handleProgressBarUpdate}
     >
+      <div></div>
       <Filler percentage={percentage}></Filler>
+      {
+        data.map((item) => (
+          <Milestone key={item.timestamp} title={item.title} content={item.content} position={(item.timestamp / length) * 100} visible={(item.timestamp / length) * 100 >= percentage ? false : true}></Milestone>
+        ))
+      }
     </div>
   )
 }

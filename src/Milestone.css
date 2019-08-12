@@ -1,0 +1,9 @@
+.milestone-circle {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: coral;
+  text-align: center;
+  border: 5px solid coral;
+}
